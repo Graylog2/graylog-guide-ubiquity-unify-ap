@@ -8,7 +8,7 @@ This guide explains how to configure a [Ubiquity Networks Unifi Enterprise WiFi 
 
 1. Start a _Syslog UDP_ input and remember the port you let it listen on. You'll need it later when you are pointing your access points to Graylog.
 1. Create a stream and call it _Ubiquity Access Point logs_
-1. Add one stream rule: `message must match regular expression ^\(".+,(.+?),.+"\) (.+?): (.+)$`
+1. Add one stream rule: `message must match regular expression ^\(?"?.+,(.+?),.+"?\)? (.+?): (.+)$`
 1. Create a pipeline with one stage and two steps:
   * Parse the actual log message into fields and clean it up
   * Search for any mac address in the message and add it as another field
@@ -20,7 +20,7 @@ rule "parse Ubiquity access point logs"
 when
   has_field("message")
 then
-  let m = regex("^\\(\".+,(.+?),.+\"\\) (.+?): (.+)$", to_string($message.message));
+  let m = regex("^\\(?\"?.+,(.+?),.+\"?\\)? (.+?): (.+)$", to_string($message.message));
   
   let bssid = m["0"];
   let subsystem = m["1"];
