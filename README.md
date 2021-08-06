@@ -20,7 +20,7 @@ rule "parse Ubiquity access point logs"
 when
   has_field("message")
 then
-  let m = regex("^\\(?\"?.+,(.+?),.+\"?\\)? (.+?): (.+)$", to_string($message.message));
+  let m = regex("^.+,(.+?),.+: (.+): (\\{.+\\})(.+$|$)", to_string($message.message));
   
   let bssid = m["0"];
   let subsystem = m["1"];
