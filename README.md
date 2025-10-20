@@ -1,3 +1,7 @@
+# This guide has been archived.
+The information in this guide is very old and likely no longer applicable to current versions of Graylog. 
+Please take that into account when reading the following content.
+
 # Writing Ubiquity Unifi WiFi Access Point logs into Graylog
 
 This guide explains how to configure a [Ubiquity Networks Unifi Enterprise WiFi Access Point](https://www.ubnt.com/unifi/unifi-ap/) to send logs to Graylog and how to configure Graylog to parse these into nicely structured messages.
